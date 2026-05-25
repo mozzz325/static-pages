@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBCA 五国收费规则对比</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5;
+    padding: 32px 16px;
+    color: #1a1a2e;
+  }
+
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #8c8c9e;
+    margin-bottom: 28px;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  /* Card */
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+    transition: box-shadow .2s, transform .2s;
+  }
+  .card:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,.08), 0 8px 28px rgba(0,0,0,.06);
+    transform: translateY(-1px);
+  }
+
+  .card-header {
+    padding: 18px 20px 14px;
+    color: #fff;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .card-header .flag { font-size: 28px; line-height: 1; }
+  .card-header .country { font-size: 20px; font-weight: 700; }
+  .card-header .scheme {
+    font-size: 12px;
+    opacity: .8;
+    margin-left: auto;
+    background: rgba(255,255,255,.2);
+    border-radius: 99px;
+    padding: 2px 10px;
+    white-space: nowrap;
+  }
+
+  .card-body { padding: 16px 20px 20px; }
+
+  /* Fee table */
+  .fee-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .fee-table th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: #8c8c9e;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e8e8ee;
+  }
+  .fee-table td {
+    padding: 7px 0;
+    border-bottom: 1px solid #f4f4f8;
+    vertical-align: top;
+  }
+  .fee-table tr:last-child td { border-bottom: none; }
+  .fee-table .route {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+
+  /* Currency */
+  .fee { font-weight: 600; font-variant-numeric: tabular-nums; font-family: "SF Mono","Fira Code","Cascadia Code",monospace; }
+  .fee.note { font-weight: 400; font-size: 11px; color: #8c8c9e; display: block; }
+
+  /* Fixed fee layout (Nigeria) */
+  .fixed-fee-block { margin-bottom: 12px; }
+  .fixed-fee-block:last-child { margin-bottom: 0; }
+  .fixed-fee-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    margin-bottom: 3px;
+  }
+  .fixed-fee-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13px;
+    padding: 4px 0;
+    border-bottom: 1px solid #f4f4f8;
+  }
+  .fixed-fee-row:last-child { border-bottom: none; }
+  .fixed-fee-row .label { color: #555; }
+  .fixed-fee-row .val { font-weight: 600; }
+
+  /* Info badge */
+  .info-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e8e8ee;
+    font-size: 12px;
+    color: #8c8c9e;
+    flex-wrap: wrap;
+  }
+  .info-row span { white-space: nowrap; }
+  .info-row .dot { color: #ccc; }
+
+  /* Global note */
+  .global-note {
+    margin-top: 24px;
+    background: #fffbe6;
+    border-left: 3px solid #faad14;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #8a6d14;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .global-note .icon { font-size: 16px; flex-shrink: 0; margin-top: -1px; }
+
+  /* Gradient colors per card */
+  .ng { background: linear-gradient(135deg, #0a7e3d, #16a34a); }
+  .ke { background: linear-gradient(135deg, #b91c1c, #dc2626); }
+  .tz { background: linear-gradient(135deg, #075985, #0284c7); }
+  .eg { background: linear-gradient(135deg, #b45309, #d97706); }
+  .bw { background: linear-gradient(135deg, #4f46e5, #6366f1); }
+
+  .route-ng { background: #dcfce7; color: #166534; }
+  .route-ke { background: #fce4e4; color: #991b1b; }
+  .route-tz { background: #e0f2fe; color: #075985; }
+  .route-eg { background: #fef3c7; color: #92400e; }
+  .route-bw { background: #e0e7ff; color: #3730a3; }
+
+  .highlight {
+    display: inline-block;
+    background: #f0fdf4;
+    color: #166534;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 16px 8px; }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>CBCA 五国收费规则</h1>
+  <p class="subtitle">尼日利亚 · 肯尼亚 · 坦桑尼亚 · 埃及 · 博茨瓦纳</p>
+
+  <div class="grid">
+
+    <!-- 尼日利亚 -->
+    <div class="card">
+      <div class="card-header ng">
+        <span class="flag">🇳🇬</span>
+        <span class="country">尼日利亚</span>
+        <span class="scheme">SONCAP</span>
+      </div>
+      <div class="card-body">
+        <div class="fixed-fee-block">
+          <div class="fixed-fee-label" style="color:#166534;">PC1 · 未注册产品</div>
+          <div class="fixed-fee-row"><span class="label">基础费</span><span class="val">USD 500</span></div>
+          <div class="fixed-fee-row"><span class="label">第2个型号起</span><span class="val">+ USD 60 <span style="font-weight:400;color:#8c8c9e;">/ 型号</span></span></div>
+        </div>
+        <div class="fixed-fee-block">
+          <div class="fixed-fee-label" style="color:#166534;">PC2 · 已注册产品</div>
+          <div class="fixed-fee-row"><span class="label">基础费</span><span class="val">USD 1,000</span></div>
+          <div class="fixed-fee-row"><span class="label">第2个型号起</span><span class="val">+ USD 120 <span style="font-weight:400;color:#8c8c9e;">/ 型号</span></span></div>
+        </div>
+        <div class="fixed-fee-block">
+          <div class="fixed-fee-label" style="color:#166534;">PC3 · 持证制造商</div>
+          <div class="fixed-fee-row"><span class="label">基础费</span><span class="val">USD 2,000</span></div>
+          <div class="fixed-fee-row"><span class="label">第2个型号起</span><span class="val">+ USD 120 <span style="font-weight:400;color:#8c8c9e;">/ 型号</span></span></div>
+        </div>
+        <div class="info-row">
+          <span>SC 装运证书 <strong>USD 350 / 份</strong></span>
+          <span class="dot">·</span>
+          <span>固定收费</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 肯尼亚 -->
+    <div class="card">
+      <div class="card-header ke">
+        <span class="flag">🇰🇪</span>
+        <span class="country">肯尼亚</span>
+        <span class="scheme">PVoC / CoC</span>
+      </div>
+      <div class="card-body">
+        <table class="fee-table">
+          <thead>
+            <tr><th>路径</th><th>费率</th><th>范围</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="route route-ke">Route A</span><br><span style="font-size:11px;color:#8c8c9e;">首次申请</span></td>
+              <td><span class="fee">0.60%</span></td>
+              <td><span style="font-size:11px;">MIN 300<br>MAX 3,500</span></td>
+            </tr>
+            <tr>
+              <td><span class="route route-ke">Route B</span><br><span style="font-size:11px;color:#8c8c9e;">注册产品</span></td>
+              <td><span class="fee">0.55%</span></td>
+              <td><span style="font-size:11px;color:#8c8c9e;">—</span></td>
+            </tr>
+            <tr>
+              <td><span class="route route-ke">Route C</span><br><span style="font-size:11px;color:#8c8c9e;">持证制造商</span></td>
+              <td><span class="fee">0.50%</span></td>
+              <td><span style="font-size:11px;color:#8c8c9e;">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="info-row">
+          <span>计费基数 <strong>FOB 货值</strong></span>
+          <span class="dot">·</span>
+          <span>百分比费率</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 坦桑尼亚 -->
+    <div class="card">
+      <div class="card-header tz">
+        <span class="flag">🇹🇿</span>
+        <span class="country">坦桑尼亚</span>
+        <span class="scheme">PVoC / CoC</span>
+      </div>
+      <div class="card-body">
+        <table class="fee-table">
+          <thead>
+            <tr><th>路径</th><th>费率</th><th>范围</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="route route-tz">Route A</span><br><span style="font-size:11px;color:#8c8c9e;">首次申请</span></td>
+              <td><span class="fee">0.50%</span></td>
+              <td><span style="font-size:11px;">MIN 250<br>MAX 5,000</span></td>
+            </tr>
+            <tr>
+              <td><span class="route route-tz">Route B</span><br><span style="font-size:11px;color:#8c8c9e;">注册产品</span></td>
+              <td><span class="fee">0.45%</span></td>
+              <td><span style="font-size:11px;color:#8c8c9e;">—</span></td>
+            </tr>
+            <tr>
+              <td><span class="route route-tz">Route C</span><br><span style="font-size:11px;color:#8c8c9e;">持证制造商</span></td>
+              <td><span class="fee">0.25%</span></td>
+              <td><span style="font-size:11px;color:#8c8c9e;">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="info-row">
+          <span>计费基数 <strong>FOB 货值</strong></span>
+          <span class="dot">·</span>
+          <span>百分比费率</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 埃及 -->
+    <div class="card">
+      <div class="card-header eg">
+        <span class="flag">🇪🇬</span>
+        <span class="country">埃及</span>
+        <span class="scheme">GOEIC / CoI</span>
+      </div>
+      <div class="card-body">
+        <div style="text-align:center; padding: 8px 0 12px;">
+          <div style="font-size:36px; font-weight:800; color:#92400e; line-height:1;">
+            0.50<span style="font-size:20px;">%</span>
+          </div>
+          <div style="font-size:13px; color:#8c8c9e; margin-top:2px;">FOB 货值</div>
+          <div style="font-size:12px; margin-top:8px;">
+            <span class="highlight">最低 USD 300</span>
+          </div>
+        </div>
+        <div class="info-row" style="justify-content:center;">
+          <span>监管机构 <strong>GOEIC</strong></span>
+          <span class="dot">·</span>
+          <span>CoI 证书</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 博茨瓦纳 -->
+    <div class="card">
+      <div class="card-header bw">
+        <span class="flag">🇧🇼</span>
+        <span class="country">博茨瓦纳</span>
+        <span class="scheme">SIIR / COC</span>
+      </div>
+      <div class="card-body">
+        <div style="text-align:center; padding: 8px 0 12px;">
+          <div style="font-size:36px; font-weight:800; color:#3730a3; line-height:1;">
+            0.50<span style="font-size:20px;">%</span>
+          </div>
+          <div style="font-size:13px; color:#8c8c9e; margin-top:2px;">FOB 货值</div>
+          <div style="font-size:12px; margin-top:8px;">
+            <span class="highlight">最低 USD 300</span>
+          </div>
+        </div>
+        <div class="info-row" style="justify-content:center;">
+          <span>监管机构 <strong>BOBS</strong></span>
+          <span class="dot">·</span>
+          <span>COC 证书</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 全局说明 -->
+  <div class="global-note">
+    <span class="icon">💡</span>
+    <span>以上费用均<strong>不含 6% VAT</strong>（增值税）。含税实际费用 = 标准费用 × 1.06。非洲各国税率政策可能变动，请以最新合同为准。</span>
+  </div>
+
+</div>
+</body>
+</html>
