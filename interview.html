@@ -196,7 +196,18 @@ function renderCards(){
     return `<article class="card${hotCls}" data-c="${x[0]}"><div class="top"><span class="num">${String(i+1).padStart(2,'0')}</span><div style="display:flex;gap:6px;align-items:center"><span class="tag">${x[0]}</span>${hot}<button class="speak-btn" data-idx="${i}" title="朗读题目">🔊</button></div></div><h3>${e(x[1])}</h3><div class="mem"><small>记忆点</small>${e(x[2])}</div><details><summary>展开推荐答案</summary><div class="ans">${e(x[3])}</div>${x[4]?`<div class="avoid"><b>表达避雷：</b>${e(x[4])}</div>`:''}</details></article>`;
   }).join('');
 }
-renderCards();
+// 安全渲染：等待 DOM 就绪 + 错误隔离
+function safeRender(){
+  try{
+    if(!box){console.error('box not found');return;}
+    renderCards();
+    console.log('Cards rendered:',data.length);
+  }catch(e){
+    console.error('renderCards error:',e);
+    box.innerHTML='<p style="padding:20px;color:red">⚠️ 题库加载失败，请刷新页面。错误：'+e.message+'</p>';
+  }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',safeRender);else safeRender();
 // 卡片朗读按钮
 let curBtn=null;
 box.addEventListener('click',function(ev){
