@@ -66,6 +66,22 @@
 ];
 function e(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}
 const today=new Date().toISOString().slice(0,10);
+// ============ 设置面板（优先执行，隔离错误） ============
+(function(){
+  try{
+    const p=document.getElementById('settings-panel'),b=document.getElementById('settings-btn');
+    if(!p||!b)return;
+    b.addEventListener('click',function(e){e.stopPropagation();p.classList.toggle('show');});
+    document.addEventListener('click',function(e){if(p.classList.contains('show')&&!p.contains(e.target)&&e.target!==b)p.classList.remove('show');});
+    function load(){document.getElementById('cfg-azure-key').value=getSetting('azureKey')||'';document.getElementById('cfg-azure-region').value=getSetting('azureRegion')||'eastasia';document.getElementById('cfg-ds-key').value=getSetting('dsKey')||'';document.getElementById('cfg-voice').value=getSetting('voice')||'zh-CN-YunxiNeural';}
+    load();
+    document.getElementById('cfg-save').addEventListener('click',function(){
+      const s={azureKey:document.getElementById('cfg-azure-key').value.trim(),azureRegion:document.getElementById('cfg-azure-region').value,dsKey:document.getElementById('cfg-ds-key').value.trim(),voice:document.getElementById('cfg-voice').value};
+      localStorage.anki_settings=JSON.stringify(s);p.classList.remove('show');alert('✅ 设置已保存！');
+    });
+    document.getElementById('cfg-reset').addEventListener('click',function(){localStorage.removeItem('anki_settings');localStorage.removeItem('anki_checkin');localStorage.removeItem('anki_errors');localStorage.removeItem('anki_history');load();p.classList.remove('show');alert('已重置所有数据和设置！');});
+  }catch(e){console.error('Settings panel error:',e);}
+})();
 // ============ 每日打卡系统 ============
 (function(){
   const DAYS=[{date:'2026-05-29',label:'5/29'},{date:'2026-05-30',label:'5/30'},{date:'2026-05-31',label:'5/31'},{date:'2026-06-01',label:'6/1'},{date:'2026-06-02',label:'6/2'},{date:'2026-06-03',label:'6/3'}];
@@ -334,19 +350,4 @@ function updateTodayCount(){
 }
 (function(){let h=[];try{h=JSON.parse(localStorage.anki_history||'[]');}catch(e){}document.getElementById('today-count').textContent=h.length&&h[h.length-1].date===today?h[h.length-1].count:0;})();
 window.updateTodayCount=updateTodayCount;
-// ============ 设置面板 ============
-(function(){
-  const panel=document.getElementById('settings-panel'),btn=document.getElementById('settings-btn');
-  btn.onclick=function(e){e.stopPropagation();panel.classList.toggle('show');};
-  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==btn)panel.classList.remove('show');});
-  function load(){const s=getSetting('azureKey');document.getElementById('cfg-azure-key').value=getSetting('azureKey');document.getElementById('cfg-azure-region').value=getSetting('azureRegion')||'eastasia';document.getElementById('cfg-ds-key').value=getSetting('dsKey');document.getElementById('cfg-voice').value=getSetting('voice')||'zh-CN-YunxiNeural';}
-  load();
-  document.getElementById('cfg-save').onclick=function(){
-    const s={azureKey:document.getElementById('cfg-azure-key').value.trim(),azureRegion:document.getElementById('cfg-azure-region').value,dsKey:document.getElementById('cfg-ds-key').value.trim(),voice:document.getElementById('cfg-voice').value};
-    localStorage.anki_settings=JSON.stringify(s);
-    panel.classList.remove('show');
-    alert('✅ 设置已保存！');
-  };
-  document.getElementById('cfg-reset').onclick=function(){localStorage.removeItem('anki_settings');localStorage.removeItem('anki_checkin');localStorage.removeItem('anki_errors');localStorage.removeItem('anki_history');load();panel.classList.remove('show');alert('已重置所有数据和设置！');};
-})();
 </script></body></html>
