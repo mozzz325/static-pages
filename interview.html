@@ -18,7 +18,7 @@
 .avoid{margin-top:10px;background:var(--w);border:1px solid #ffe1bd;color:#8a3b20;border-radius:14px;padding:10px}.hide{display:none}summary{cursor:pointer;color:var(--p);font-weight:900;border-top:1px solid var(--l);padding-top:10px;margin-top:10px}
 .stats{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-size:13px}.stats span{background:#fff;border:1px solid var(--l);border-radius:999px;padding:4px 14px;font-weight:700;color:var(--m)}.stats span em{font-style:normal;color:var(--p)}.card.hot-card{border-color:#ffc0c0;box-shadow:0 0 0 2px rgba(255,0,0,.08)}
 @media(max-width:760px){.wrap{padding:14px}.grid{grid-template-columns:1fr}.tools{position:static}.hero,.card,.quick{padding:18px}.settings-panel{left:12px;right:12px;width:auto;top:56px}.settings-toggle{top:10px;right:12px}.anki-body{padding:18px}.anki-footer button{font-size:13px;padding:8px}}
-</style></head><body><div style="background:#4CAF50;color:#fff;padding:6px 16px;font-size:13px;font-family:monospace;text-align:center;position:fixed;top:0;left:0;right:0;z-index:99998;pointer-events:none">[部署确认] V3 已加载 — 此横幅为静态HTML，无需JS</div><div class="wrap">
+</style></head><body><div class="wrap">
 <button class="settings-toggle" id="settings-btn" title="设置" onclick="var p=document.getElementById('settings-panel');if(p){p.classList.toggle('show');event.stopPropagation();}">⚙️</button>
 <div class="settings-panel" id="settings-panel">
   <b>🔑 API 设置</b>
@@ -37,14 +37,6 @@
 <section class="quick"><b>万能收束句：</b>我不是要推翻各地原有成熟做法，而是在尊重属地经验和客户关系的基础上，把底线、数据、流程和风险处置机制统一起来，让区域整合真正服务于业务稳定、质量提升和长期增长。</section>
 <section id="cards" class="grid"></section></div>
 <script>
-// ====== 调试：确认JS执行 ======
-var _dbg=document.createElement('div');
-_dbg.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:#ff0;color:#000;padding:8px 16px;font-size:14px;font-family:monospace;white-space:pre-wrap;max-height:120px;overflow-y:auto;border-bottom:2px solid red';
-_dbg.textContent='[调试] JS开始执行...';
-if(document.body)document.body.insertBefore(_dbg,document.body.firstChild);else _dbg.textContent+='\n[ERROR] document.body is null!';
-window._dbgLog=function(msg){_dbg.textContent+=('\n'+msg);_dbg.scrollTop=_dbg.scrollHeight};
-try{console.log("[DBG-START] JS begin, body="+!!document.body);
-  _dbgLog('Step1: 定义数据数组...');
 const data=[
 ['基础表达','请用2分钟做自我介绍，并说明为什么竞聘CBCA部副职。','近10年经验 → 全流程理解 → 从操作转管理 → 区域整合需要 → 稳妥落地。','各位领导好，我是夏雯，目前在浙江公司检验业务部担任CBCA技术主管，同时也是检验公司和浙江公司的授权签字人。\n\n我从事CBCA相关工作近10年，经历过检验员、业务协调、单证审核、技术管理和团队管理等岗位，对CBCA业务从受理、标准判定、报告审核、检验安排、出证到标准局查询应对，都有比较完整的理解。\n\n近几年，我的工作重点逐步从具体操作转向技术把关和管理支持，包括审核人员培训、复杂业务处理、客户和市场支持、17020体系管理、产品线质量抽查、体系文件编写以及标准局审核接待等工作。\n\n我这次竞聘，是因为区域层面业务整合后，岗位要求已经不只是管理浙江单一团队，而是要面对浙江、宁波、上海、安徽四地在操作习惯、审核尺度、检验安排、价格体系和客户关系上的差异。我认为自己既有一线经验，也参与过管理、质量和系统化建设，比较适合从实际问题出发，推动这项工作稳妥落地。\n\n如果有机会承担这个岗位，我希望在保留各地成熟做法的基础上，先统一底线和关键节点，再通过交叉审核、台账透明、规则沉淀和数字化工具，逐步提升区域CBCA业务的合规水平、交付效率和长期竞争力。','不要说：我到了该挑战更高职位的时候。'],
 ['基础表达','四地CBCA业务整合，你认为最大挑战是什么？准备怎么切入？','先稳业务，再统一底线；先看得见，再管得住；先局部优化，再区域协同。','我认为最大的挑战不是简单把四地流程合并，而是在不影响现有业务连续性的前提下，把四地原有的业务基础、客户关系和操作经验整合成区域化管理体系。\n\n具体难点包括：四地长期形成的操作习惯和审核尺度不同；客户和原公司的绑定比较深，不适合一开始简单交叉受理；定价、应收账款、检验安排等经营管理问题也不是短期能一步统一；人员对业务理解和风险判断能力也存在差异。\n\n所以我的切入点不是大改，而是先摸清现状，再小步统一。第一，从单证审核切入，形成区域统一的合规红线。第二，红线以上的部分，不急于推翻各地原有模式，通过在线台账、档案互查和交叉审核逐步沉淀共识。第三，检验调度、客户维护、价格和应收先做透明化管理和数据摸底，再逐步优化。',''],
@@ -73,7 +65,6 @@ const data=[
 ['宏观问题','你怎么看年轻干部的优势和风险？怎么避免自己决策不够稳？','优势：学习快、适应快、工具意识强。风险：经验少、场面少、全局视角需提升。稳决策：事项分层、依据汇报、过程留痕、持续学习。','年轻干部优势在于学习速度快、适应变化能力强、对新工具和新方法接受度高，也有比较长的持续投入周期。对于CBCA这种产品范围广、外部政策变化快、数字化工具逐步介入的业务，这些优势有价值。\n\n风险也明确，就是经验积累还不够，经历的大场面和复杂局面还不够多，全局经营视角需要持续提升。为了避免决策不够稳，我会把事项分层处理。常规业务按既有SOP、制度和授权边界执行；非常规事项，如特殊放行、重大客户、价格政策、质量风险、标准局质询等，先整理事实、依据、风险点和备选方案，再向分管领导汇报；重要决策过程留痕，形成案例和经验；持续学习公司制度、区域政策和业务要求。','少说：体力脑力好。'],
 ['宏观问题','如果这次竞聘没有成功，你怎么看？','感谢机会 → 坦然接受 → 服从组织 → 继续贡献 → 保留进取心。','如果这次竞聘没有成功，首先我会非常感谢区域给我这次机会。这次竞聘本身对我来说就是一次重要复盘，让我在现岗位工作接近三年的节点上，重新梳理过去工作，也从区域层面思考CBCA未来怎么整合、怎么发展、怎么提升。\n\n竞聘有成功也有不成功，我会坦然接受组织选择。如果最终有更合适的同事承担这个岗位，我会尊重结果，也会积极配合他的工作。因为对CBCA来说，最重要的是业务稳定、团队成长和区域整体发展，而不是我个人一定要在哪个位置上。\n\n当然，我既然来竞聘，就说明我对这个岗位有意愿，也愿意承担更大责任。如果这次没有成功，我也会把准备过程中形成的思考继续带回现岗位，在审核统一、风险控制、工具化建设和团队协同方面继续做好自己的工作。','不要说：别人上我更开心。']
 ];
-_dbgLog('Step2: 数据定义完成,共'+data.length+'题');
 function e(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}
 const today=new Date().toISOString().slice(0,10);
 // ============ getSetting 工具函数（在设置面板之前定义） ============
@@ -199,7 +190,7 @@ window.scoreAnswer=async function(qIdx,q,answer,transcript){
 };
 // ============ 渲染卡片列表 ============
 const box=document.getElementById('cards');
-_dbgLog('Step3: box='+(box?'found':'NULL!')+', data.length='+data.length);
+
 function renderCards(){
   box.innerHTML=data.map((x,i)=>{
     const hot=window.isHot(i)?'<span class="hot">🔥高频错题</span>':'';
@@ -212,16 +203,12 @@ function safeRender(){
   try{
     if(!box){console.error('box not found');return;}
     renderCards();
-_dbgLog('Step4: renderCards完成, 卡片HTML长度='+box.innerHTML.length);
   }catch(e){
-    _dbgLog('ERROR in renderCards: '+e.message);
     console.error('renderCards error:',e);
     box.innerHTML='<p style="padding:20px;color:red">⚠️ 题库加载失败，请刷新页面。错误：'+e.message+'</p>';
   }
 }
-_dbgLog('Step5: 调用safeRender...');
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',safeRender);else safeRender();
-_dbgLog('Step6: safeRender已调用, readyState='+document.readyState);
 // 卡片朗读按钮
 let curBtn=null;
 box.addEventListener('click',function(ev){
@@ -380,6 +367,4 @@ function updateTodayCount(){
 }
 (function(){let h=[];try{h=JSON.parse(localStorage.anki_history||'[]');}catch(e){}document.getElementById('today-count').textContent=h.length&&h[h.length-1].date===today?h[h.length-1].count:0;})();
 window.updateTodayCount=updateTodayCount;
-_dbgLog('Step7: 全部脚本执行完成!');
-}catch(e){console.error('[DBG-FATAL] '+e.message+' line '+e.lineNumber);_dbgLog('!!! FATAL ERROR: '+e.message+' (line '+e.lineNumber+')');_dbg.style.background='#f00';_dbg.style.color='#fff';}
 </script></body></html>
