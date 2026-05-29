@@ -19,7 +19,7 @@
 .stats{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-size:13px}.stats span{background:#fff;border:1px solid var(--l);border-radius:999px;padding:4px 14px;font-weight:700;color:var(--m)}.stats span em{font-style:normal;color:var(--p)}.card.hot-card{border-color:#ffc0c0;box-shadow:0 0 0 2px rgba(255,0,0,.08)}
 @media(max-width:760px){.wrap{padding:14px}.grid{grid-template-columns:1fr}.tools{position:static}.hero,.card,.quick{padding:18px}.settings-panel{left:12px;right:12px;width:auto;top:56px}.settings-toggle{top:10px;right:12px}.anki-body{padding:18px}.anki-footer button{font-size:13px;padding:8px}}
 </style></head><body><div class="wrap">
-<button class="settings-toggle" id="settings-btn" title="设置">⚙️</button>
+<button class="settings-toggle" id="settings-btn" title="设置" onclick="var p=document.getElementById('settings-panel');if(p){p.classList.toggle('show');event.stopPropagation();}">⚙️</button>
 <div class="settings-panel" id="settings-panel">
   <b>🔑 API 设置</b>
   <label>Azure TTS Key</label><input id="cfg-azure-key" placeholder="粘贴 Azure Speech Key">
@@ -73,17 +73,8 @@ function saveSetting(k,v){try{var s=JSON.parse(localStorage.anki_settings||'{}')
 (function(){
   var p=document.getElementById('settings-panel'),b=document.getElementById('settings-btn');
   if(!p||!b){console.warn('Settings: elements not found');return;}
-  console.log('Settings: panel initialized, button found');
-  // 点击齿轮 —— 切换面板
-  function togglePanel(ev){
-    if(ev)ev.stopPropagation();
-    console.log('Settings: toggle clicked, current show=',p.classList.contains('show'));
-    p.classList.toggle('show');
-    console.log('Settings: after toggle, show=',p.classList.contains('show'));
-  }
-  b.addEventListener('click',togglePanel);
-  b.onclick=togglePanel;
-  // 点击面板外部关闭
+  console.log('Settings: panel ready');
+  // 点击面板外部关闭（按钮点击已在 HTML onclick 中处理）
   document.addEventListener('click',function(e){
     if(p.classList.contains('show')&&!p.contains(e.target)&&e.target!==b)
       p.classList.remove('show');
@@ -95,20 +86,18 @@ function saveSetting(k,v){try{var s=JSON.parse(localStorage.anki_settings||'{}')
     document.getElementById('cfg-ds-key').value=getSetting('dsKey')||'';
     document.getElementById('cfg-voice').value=getSetting('voice')||'zh-CN-YunxiNeural';
   })();
-  // 保存按钮
+  // 保存
   document.getElementById('cfg-save').addEventListener('click',function(){
     var s={azureKey:document.getElementById('cfg-azure-key').value.trim(),azureRegion:document.getElementById('cfg-azure-region').value,dsKey:document.getElementById('cfg-ds-key').value.trim(),voice:document.getElementById('cfg-voice').value};
     localStorage.anki_settings=JSON.stringify(s);p.classList.remove('show');alert('✅ 设置已保存！');
   });
-  // 重置按钮
+  // 重置
   document.getElementById('cfg-reset').addEventListener('click',function(){
     localStorage.removeItem('anki_settings');localStorage.removeItem('anki_checkin');localStorage.removeItem('anki_errors');localStorage.removeItem('anki_history');
-    (function load(){
-      document.getElementById('cfg-azure-key').value='';
-      document.getElementById('cfg-azure-region').value='eastasia';
-      document.getElementById('cfg-ds-key').value='';
-      document.getElementById('cfg-voice').value='zh-CN-YunxiNeural';
-    })();
+    document.getElementById('cfg-azure-key').value='';
+    document.getElementById('cfg-azure-region').value='eastasia';
+    document.getElementById('cfg-ds-key').value='';
+    document.getElementById('cfg-voice').value='zh-CN-YunxiNeural';
     p.classList.remove('show');alert('已重置所有数据和设置！');
   });
 })();
