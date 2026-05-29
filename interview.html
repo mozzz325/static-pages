@@ -295,7 +295,7 @@ document.getElementById('open').onclick=function(){let o=this.textContent==='展
       flipped=true;
       document.querySelector('#anki-card .anki-body').scrollTop=document.querySelector('#anki-card .anki-body').scrollHeight;
     }else if(this.textContent.includes('语音回答')||this.textContent.includes('重答')){// 开始录音
-      recording=startRecording((final,interim)=>{
+      recording=startRecording(async (final,interim)=>{
         if(final)finalTranscript+=final;
         document.getElementById('rec-transcript').textContent=finalTranscript||interim||'...';
         document.getElementById('rec-transcript').style.display='';
