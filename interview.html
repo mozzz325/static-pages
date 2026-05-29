@@ -13,10 +13,10 @@
 /* Score card */
 .anki-score{margin-top:16px;border-radius:14px;padding:16px;animation:fadeIn .4s ease}.anki-score .big{font-size:48px;font-weight:900;line-height:1}.anki-score .bad{color:var(--r)}.anki-score .ok{color:var(--o)}.anki-score .good{color:var(--g)}.anki-score ul{margin:6px 0;padding-left:18px;font-size:14px}.anki-score .strength{color:var(--g);font-weight:700}.anki-score .tip{color:var(--p)}.anki-score .transcript{background:#f6f7fb;border-radius:8px;padding:10px;font-size:13px;margin:8px 0;color:var(--m)}
 /* Recording indicator */
-.rec-indicator{display:flex;align-items:center;gap:8px;padding:10px 16px;background:#fff0f0;border:2px solid var(--r);border-radius:12px;margin:10px 0}.rec-indicator .dot{width:12px;height:12px;border-radius:50%;background:var(--r);animation:pulse 1s infinite}.rec-transcript{font-size:14px;color:var(--t);margin:8px 0;padding:10px;background:#fafbff;border-radius:8px;border:1px dashed var(--l);min-height:40px}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.spinner{border:3px solid var(--l);border-top-color:var(--p);border-radius:50%;width:20px;height:20px;animation:spin .6s linear infinite;display:inline-block}@keyframes spin{to{transform:rotate(360deg)}}
+.rec-indicator{display:flex;align-items:center;gap:8px;padding:10px 16px;background:#fff0f0;border:2px solid var(--r);border-radius:12px;margin:10px 0}.rec-indicator .dot{width:12px;height:12px;border-radius:50%;background:var(--r);animation:pulse 1s infinite}.rec-transcript{font-size:14px;color:var(--t);margin:8px 0;padding:10px;background:#fafbff;border-radius:8px;border:1px dashed var(--l);min-height:40px}.voice-section{margin-top:16px;padding:16px;background:linear-gradient(135deg,#f0f6ff,#eaf2fb);border-radius:14px;border:1px dashed var(--p)}.voice-header{font-weight:800;font-size:16px;color:var(--p);margin-bottom:4px}.voice-hint{font-size:13px;color:var(--m);margin:0 0 12px}.voice-btn{display:block;width:100%;padding:12px;font-size:15px;font-weight:800;background:var(--p);color:#fff;border:none;border-radius:10px;cursor:pointer;transition:all .2s}.voice-btn:hover{background:#1a4266;color:#fff}.voice-btn.recording{background:var(--r);animation:pulse-bg 1.5s infinite}@keyframes pulse-bg{0%,100%{background:var(--r)}50%{background:#b02030}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.spinner{border:3px solid var(--l);border-top-color:var(--p);border-radius:50%;width:20px;height:20px;animation:spin .6s linear infinite;display:inline-block}@keyframes spin{to{transform:rotate(360deg)}}
 .anki-footer{padding:14px 20px;border-top:1px solid var(--l);display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#fafbff}.anki-footer button{flex:1;min-width:70px;font-size:14px;padding:10px 12px}.anki-main-btn{background:var(--p)!important;color:#fff!important;border-color:var(--p)!important}.anki-counter{font-size:12px;color:var(--m);white-space:nowrap}
 .avoid{margin-top:10px;background:var(--w);border:1px solid #ffe1bd;color:#8a3b20;border-radius:14px;padding:10px}.hide{display:none}summary{cursor:pointer;color:var(--p);font-weight:900;border-top:1px solid var(--l);padding-top:10px;margin-top:10px}
-.stats{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-size:13px}.stats span{background:#fff;border:1px solid var(--l);border-radius:999px;padding:4px 14px;font-weight:700;color:var(--m)}.stats span em{font-style:normal;color:var(--p)}.card.hot-card{border-color:#ffc0c0;box-shadow:0 0 0 2px rgba(255,0,0,.08)}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.hero-actions button{font-size:15px;font-weight:800;padding:12px 22px;border-radius:14px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 2px 10px rgba(0,0,0,.08)}.hero-actions button:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.12)}.act-start{background:var(--p);color:#fff}.act-start:hover{background:#1a4266;color:#fff}.act-daily{background:linear-gradient(135deg,#f0a030,#e88820);color:#fff}.act-daily:hover{background:linear-gradient(135deg,#d88f20,#d07018);color:#fff}.act-rand{background:#fff;color:var(--p);border:2px solid var(--p)!important}.act-rand:hover{background:var(--s)}.stats{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-size:13px}.stats span{background:#fff;border:1px solid var(--l);border-radius:999px;padding:4px 14px;font-weight:700;color:var(--m)}.stats span em{font-style:normal;color:var(--p)}.card.hot-card{border-color:#ffc0c0;box-shadow:0 0 0 2px rgba(255,0,0,.08)}
 @media(max-width:760px){.wrap{padding:14px}.grid{grid-template-columns:1fr}.tools{position:static}.hero,.card,.quick{padding:18px}.settings-panel{left:12px;right:12px;width:auto;top:56px}.settings-toggle{top:10px;right:12px}.anki-body{padding:18px}.anki-footer button{font-size:13px;padding:8px}}
 </style></head><body><div class="wrap">
 <button class="settings-toggle" id="settings-btn" title="设置" onclick="var p=document.getElementById('settings-panel');if(p){p.classList.toggle('show');event.stopPropagation();}">⚙️</button>
@@ -30,10 +30,15 @@
   <div class="note">Key 仅存本地浏览器，不会上传。Azure 免费额度 50 万字符/月，DeepSeek 按量计费。</div>
 </div>
 <section class="hero"><h1>CBCA部副职竞聘面试题库</h1><p class="sub">速背版 + 语音练习 + AI评分｜5/29 - 6/3 冲刺</p>
-<div class="core">万能主线：不一刀切，不大拆大建；先统一底线，再透明过程；先保业务稳定，再推进区域协同；先用机制沉淀经验，再用数据和工具提升效率。</div></section>
+<div class="core">万能主线：不一刀切，不大拆大建；先统一底线，再透明过程；先保业务稳定，再推进区域协同；先用机制沉淀经验，再用数据和工具提升效率。</div>
+<div class="hero-actions">
+  <button class="act-start" id="btn-start-all" onclick="startFullPractice()">📝 开始答题（全 26 题）</button>
+  <button class="act-daily" id="btn-daily" onclick="startDailyPractice()">📅 每日练题（抽 3 题）</button>
+  <button class="act-rand" id="btn-rand" onclick="pickOneRandom()">🎲 抽一题</button>
+</div></section>
 <div class="checkin-bar" id="checkin-bar"></div>
 <div class="stats" id="stats-bar"><span>📅 今日已练 <em id="today-count">0</em> 题</span><span>🔥 高频错题 <em id="hot-count">0</em> 道</span></div>
-<nav class="tools"><input id="kw" placeholder="搜索：AI、检验、客户、定价、短板、整合"><button class="f active" data-f="all">全部</button><button class="f" data-f="基础表达">基础</button><button class="f" data-f="压力问题">压力</button><button class="f" data-f="宏观问题">宏观</button><button id="open">展开全部</button><button id="rand">🎲 抽一题</button></nav>
+<nav class="tools"><input id="kw" placeholder="搜索：AI、检验、客户、定价、短板、整合"><button class="f active" data-f="all">全部</button><button class="f" data-f="基础表达">基础</button><button class="f" data-f="压力问题">压力</button><button class="f" data-f="宏观问题">宏观</button><button id="open">展开全部</button></nav>
 <section class="quick"><b>万能收束句：</b>我不是要推翻各地原有成熟做法，而是在尊重属地经验和客户关系的基础上，把底线、数据、流程和风险处置机制统一起来，让区域整合真正服务于业务稳定、质量提升和长期增长。</section>
 <section id="cards" class="grid"></section></div>
 <script>
@@ -229,7 +234,7 @@ document.getElementById('open').onclick=function(){let o=this.textContent==='展
 (function(){
   const overlay=document.createElement('div');overlay.id='anki-overlay';
   overlay.innerHTML=`<div id="anki-card">
-  <div class="anki-head"><span id="anki-progress">第 1 / 1 题</span><span id="anki-hot-badge" class="hot-badge" style="display:none">🔥 高频错题</span><button class="anki-close" id="anki-close" title="关闭">✕</button></div>
+  <div class="anki-head"><span id="anki-progress">第 1 / 1 题</span><span id="anki-hot-badge" class="hot-badge" style="display:none">🔥 高频错题</span><span id="anki-mode-badge" style="margin-left:8px;font-size:11px;opacity:.7"></span><button class="anki-close" id="anki-close" title="关闭">✕</button></div>
   <div class="anki-body">
     <div class="anki-tag" id="anki-tag"></div>
     <p class="anki-q" id="anki-q"></p>
@@ -237,9 +242,14 @@ document.getElementById('open').onclick=function(){let o=this.textContent==='展
     <div class="anki-reveal" id="anki-reveal">
       <div class="anki-ans" id="anki-ans"></div>
       <div class="anki-avoid" id="anki-avoid" style="display:none"></div>
+      <div class="voice-section" id="anki-voice-section">
+        <div class="voice-header">🎙️ 语音练习（AI 评分）</div>
+        <p class="voice-hint">说出你的回答，AI 会根据标准答案自动评分</p>
+        <div class="rec-indicator" id="rec-indicator" style="display:none"><div class="dot"></div><span>🔴 正在聆听... 请说出你的回答</span></div>
+        <div class="rec-transcript" id="rec-transcript" style="display:none"></div>
+        <button class="voice-btn" id="anki-voice-btn">🎙️ 开始录音</button>
+      </div>
     </div>
-    <div class="rec-indicator" id="rec-indicator" style="display:none"><div class="dot"></div><span>🔴 正在聆听... 请说出你的回答</span></div>
-    <div class="rec-transcript" id="rec-transcript" style="display:none"></div>
     <div id="anki-score-area"></div>
   </div>
   <div class="anki-footer">
@@ -250,92 +260,167 @@ document.getElementById('open').onclick=function(){let o=this.textContent==='展
   </div></div>`;
   document.body.appendChild(overlay);
   let deck=[],cur=0,flipped=false,recording=false,transcript='',finalTranscript='';
+  let isDaily=false,dailyScores=[];
+  function resetVoice(){
+    finalTranscript='';transcript='';
+    document.getElementById('rec-transcript').textContent='';
+    document.getElementById('rec-transcript').style.display='none';
+    document.getElementById('rec-indicator').style.display='none';
+    var vb=document.getElementById('anki-voice-btn');
+    vb.textContent='🎙️ 开始录音';vb.classList.remove('recording');vb.disabled=false;
+  }
   function render(){
     const q=deck[cur],idx=data.indexOf(q);
     document.getElementById('anki-progress').textContent=`第 ${cur+1} / ${deck.length} 题`;
-    const hotBadge=document.getElementById('anki-hot-badge');
+    var hotBadge=document.getElementById('anki-hot-badge');
     hotBadge.style.display=window.isHot(idx)?'':'none';
+    document.getElementById('anki-mode-badge').textContent=isDaily?'📅 每日练题':'';
     document.getElementById('anki-tag').textContent=q[0];
     document.getElementById('anki-q').innerHTML=e(q[1]);
     document.getElementById('anki-mem').innerHTML=e(q[2]);
     document.getElementById('anki-reveal').classList.remove('show');
     document.getElementById('anki-ans').innerHTML=e(q[3]);
-    const avoid=document.getElementById('anki-avoid');
+    var avoid=document.getElementById('anki-avoid');
     if(q[4]){avoid.style.display='';avoid.innerHTML='<b>⚠️ 表达避雷：</b>'+e(q[4]);}else{avoid.style.display='none';}
     document.getElementById('anki-main-btn').textContent='👀 查看答案';
+    document.getElementById('anki-main-btn').disabled=false;
     document.getElementById('anki-score-area').innerHTML='';
-    document.getElementById('rec-indicator').style.display='none';
-    document.getElementById('rec-transcript').style.display='none';
-    flipped=false;recording=false;transcript='';finalTranscript='';
+    resetVoice();
+    flipped=false;recording=false;
     document.querySelector('#anki-card .anki-body').scrollTop=0;
     stopTTS();
   }
-  function open(arr,startIdx){deck=arr;cur=startIdx;render();overlay.classList.add('show');}
+  function open(arr,startIdx,daily){deck=arr;cur=startIdx;isDaily=!!daily;dailyScores=[];render();overlay.classList.add('show');}
   function close(){overlay.classList.remove('show');stopTTS();if(recording){stopRecording();recording=false;}}
+  function scrollBody(){document.querySelector('#anki-card .anki-body').scrollTop=document.querySelector('#anki-card .anki-body').scrollHeight;}
   document.getElementById('anki-close').onclick=close;
   overlay.onclick=function(ev){if(ev.target===overlay)close();};
-  document.getElementById('anki-main-btn').onclick=async function(){
-    const q=deck[cur],idx=data.indexOf(q);
-    if(!flipped){// 翻牌
+  // ---- 主按钮：只看答案，不管语音 ----
+  document.getElementById('anki-main-btn').onclick=function(){
+    if(!flipped){
       document.getElementById('anki-reveal').classList.add('show');
-      this.textContent='🎙️ 语音回答';
+      this.textContent='🙈 隐藏答案';
       flipped=true;
-      document.querySelector('#anki-card .anki-body').scrollTop=document.querySelector('#anki-card .anki-body').scrollHeight;
-    }else if(this.textContent.includes('语音回答')||this.textContent.includes('重答')){// 开始录音
-      recording=startRecording(async (final,interim)=>{
-        if(final)finalTranscript+=final;
-        document.getElementById('rec-transcript').textContent=finalTranscript||interim||'...';
-        document.getElementById('rec-transcript').style.display='';
-        if(finalTranscript){
-          this.textContent='⏳ AI 评分中...';
-          this.disabled=true;
-          document.getElementById('rec-indicator').style.display='none';
-          stopRecording();recording=false;
-          // 评分
-          const answerText=q[3]+(q[4]?('\n\n表达避雷：'+q[4]):'');
-          const result=await window.scoreAnswer(idx,q[1],answerText,finalTranscript);
-          const area=document.getElementById('anki-score-area');
-          if(result.error){area.innerHTML=`<div class="anki-score" style="background:#fff0f0"><b style="color:var(--r)">${result.error}</b></div>`;}
-          else{
-            let cls=result.score<60?'bad':result.score<80?'ok':'good';
-            let miss=result.missing&&result.missing.length?result.missing.map(s=>`<li>${s}</li>`).join(''):'';
-            area.innerHTML=`<div class="anki-score" style="background:${result.score<60?'#fff0f0':result.score<80?'#fff8ee':'#edfaf5'}">
-            <div class="big ${cls}">${result.score}</div><div style="font-size:13px;color:var(--m)">分（满分100）</div>
-            ${miss?`<p style="margin:8px 0 4px;font-weight:700;color:var(--r)">❌ 漏掉的关键点：</p><ul>${miss}</ul>`:''}
-            ${result.strength?`<p class="strength">✅ ${result.strength}</p>`:''}
-            ${result.suggestion?`<p class="tip">💡 ${result.suggestion}</p>`:''}
-            <div class="transcript"><b>你的回答：</b>${finalTranscript}</div></div>`;
-            // 记录错误
-            if(result.score<70)window.recordError(idx);
-            // 打卡
-            markCheckin();
-            updateTodayCount();
-          }
-          this.textContent='🔄 重答';this.disabled=false;
-          document.querySelector('#anki-card .anki-body').scrollTop=document.querySelector('#anki-card .anki-body').scrollHeight;
-        }
-      },(interim)=>{});// interim handled in the callback above
-      document.getElementById('rec-transcript').textContent='';
-      document.getElementById('rec-transcript').style.display='';
-      document.getElementById('rec-indicator').style.display='flex';
-      this.textContent='⏹ 停止录音';
-    }else if(this.textContent.includes('停止录音')){// 停止录音
-      stopRecording();recording=false;
-      document.getElementById('rec-indicator').style.display='none';
-      this.textContent='🎙️ 语音回答';
-      if(finalTranscript){
-        document.getElementById('rec-transcript').textContent='点击"语音回答"开始录音';
-      }
+      scrollBody();
+    }else{
+      document.getElementById('anki-reveal').classList.remove('show');
+      this.textContent='👀 查看答案';
+      flipped=false;
     }
   };
+  // ---- 语音按钮：录音 → AI评分 ----
+  document.getElementById('anki-voice-btn').onclick=async function(){
+    var vb=this;
+    if(vb.classList.contains('recording')){
+      // 手动停止录音
+      stopRecording();recording=false;
+      vb.classList.remove('recording');vb.textContent='🎙️ 开始录音';
+      document.getElementById('rec-indicator').style.display='none';
+      return;
+    }
+    if(vb.textContent.includes('重答')){
+      // 重答：清除上次结果
+      finalTranscript='';transcript='';
+      document.getElementById('rec-transcript').textContent='';
+      document.getElementById('rec-transcript').style.display='none';
+      document.getElementById('anki-score-area').innerHTML='';
+    }
+    // 开始录音
+    var started=startRecording((final,interim)=>{
+      if(final)finalTranscript+=final;
+      var rt=document.getElementById('rec-transcript');
+      rt.textContent=finalTranscript||interim||'...';
+      rt.style.display='';
+      if(finalTranscript){
+        // 自动停止并评分
+        document.getElementById('rec-indicator').style.display='none';
+        vb.classList.remove('recording');
+        vb.textContent='⏳ AI 评分中...';
+        vb.disabled=true;
+        stopRecording();recording=false;
+        doScore();
+      }
+    });
+    if(!started)return;
+    recording=true;
+    document.getElementById('rec-transcript').textContent='';
+    document.getElementById('rec-transcript').style.display='';
+    document.getElementById('rec-indicator').style.display='flex';
+    vb.classList.add('recording');
+    vb.textContent='⏹ 停止录音';
+  };
+  async function doScore(){
+    var q=deck[cur],idx=data.indexOf(q);
+    var answerText=q[3]+(q[4]?('\n\n表达避雷：'+q[4]):'');
+    var result=await window.scoreAnswer(idx,q[1],answerText,finalTranscript);
+    var area=document.getElementById('anki-score-area');
+    var vb=document.getElementById('anki-voice-btn');
+    if(result.error){
+      area.innerHTML='<div class="anki-score" style="background:#fff0f0"><b style="color:var(--r)">'+result.error+'</b></div>';
+    }else{
+      var cls=result.score<60?'bad':result.score<80?'ok':'good';
+      var miss=result.missing&&result.missing.length?result.missing.map(function(s){return'<li>'+s+'</li>';}).join(''):'';
+      area.innerHTML='<div class="anki-score" style="background:'+(result.score<60?'#fff0f0':result.score<80?'#fff8ee':'#edfaf5')+'">'
+        +'<div class="big '+cls+'">'+result.score+'</div><div style="font-size:13px;color:var(--m)">分（满分100）</div>'
+        +(miss?'<p style="margin:8px 0 4px;font-weight:700;color:var(--r)">❌ 漏掉的关键点：</p><ul>'+miss+'</ul>':'')
+        +(result.strength?'<p class="strength">✅ '+result.strength+'</p>':'')
+        +(result.suggestion?'<p class="tip">💡 '+result.suggestion+'</p>':'')
+        +'<div class="transcript"><b>你的回答：</b>'+finalTranscript+'</div></div>';
+      if(result.score<70)window.recordError(idx);
+      markCheckin();updateTodayCount();
+      // 每日练题跟踪
+      if(isDaily){
+        dailyScores.push({idx:idx,score:result.score,q:q[1],tag:q[0]});
+        if(dailyScores.length>=deck.length)showDailySummary();
+      }
+    }
+    vb.textContent='🔄 重答';vb.disabled=false;
+    scrollBody();
+  }
+  function showDailySummary(){
+    var total=dailyScores.reduce(function(s,x){return s+x.score;},0);
+    var avg=Math.round(total/dailyScores.length);
+    var best=dailyScores.reduce(function(a,b){return a.score>b.score?a:b;});
+    var worst=dailyScores.reduce(function(a,b){return a.score<b.score?a:b;});
+    var area=document.getElementById('anki-score-area');
+    var cls=avg<60?'bad':avg<80?'ok':'good';
+    var rows=dailyScores.map(function(d,i){
+      var sc=d.score<60?'bad':d.score<80?'ok':'good';
+      return'<tr><td>'+d.tag+'</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+d.q+'</td><td class="'+sc+'" style="font-weight:800">'+d.score+'分</td></tr>';
+    }).join('');
+    area.innerHTML='<div class="anki-score" style="background:#f6fdf9;border:2px solid var(--g);margin-top:24px">'
+      +'<div style="text-align:center;font-weight:800;font-size:18px;color:var(--g);margin-bottom:12px">🎉 今日练习完成！</div>'
+      +'<div style="display:flex;gap:20px;justify-content:center;margin-bottom:14px">'
+      +'<div style="text-align:center"><div class="big '+cls+'" style="font-size:36px">'+avg+'</div><div style="font-size:12px;color:var(--m)">平均分</div></div>'
+      +'<div style="text-align:center"><div style="font-size:28px;font-weight:800;color:var(--g)">'+best.score+'</div><div style="font-size:12px;color:var(--m)">最高分</div></div>'
+      +'<div style="text-align:center"><div style="font-size:28px;font-weight:800;color:var(--r)">'+worst.score+'</div><div style="font-size:12px;color:var(--m)">最低分</div></div>'
+      +'</div>'
+      +'<table style="width:100%;font-size:13px;border-collapse:collapse"><thead><tr style="background:#edfaf5"><th style="padding:6px;text-align:left">类别</th><th style="padding:6px;text-align:left">题目</th><th style="padding:6px;text-align:center">得分</th></tr></thead><tbody>'+rows+'</tbody></table>'
+      +'<p style="text-align:center;margin-top:12px;font-size:13px;color:var(--m)">低分题目已加入🔥高频错题库，下次练习会优先出现</p>'
+      +'</div>';
+    scrollBody();
+  }
+  // ---- 朗读按钮 ----
   document.getElementById('anki-speak').onclick=function(){
-    const q=deck[cur];
-    let text=flipped?`第${data.indexOf(q)+1}题。${q[1]}。记忆点：${q[2].replace(/\n/g,'。')}。推荐答案：${q[3].replace(/\n/g,'。')}`:`第${data.indexOf(q)+1}题。${q[1]}。记忆点：${q[2].replace(/\n/g,'。')}`;
+    var q=deck[cur],idx=data.indexOf(q);
+    var text=flipped?('第'+(idx+1)+'题。'+q[1]+'。记忆点：'+q[2].replace(/\n/g,'。')+'。推荐答案：'+q[3].replace(/\n/g,'。')):('第'+(idx+1)+'题。'+q[1]+'。记忆点：'+q[2].replace(/\n/g,'。'));
     if(q[4]&&flipped)text+='。表达避雷：'+q[4].replace(/\n/g,'。');
     stopTTS();speakAzure(text);
   };
-  document.getElementById('anki-prev').onclick=()=>{if(cur>0){cur--;render();}};
-  document.getElementById('anki-next').onclick=()=>{if(cur<deck.length-1){cur++;render();}else{cur=0;render();}};
+  // ---- 翻页 ----
+  document.getElementById('anki-prev').onclick=function(){if(cur>0){cur--;render();}};
+  document.getElementById('anki-next').onclick=function(){
+    if(cur<deck.length-1){cur++;render();}
+    else{
+      if(isDaily&&dailyScores.length<deck.length){
+        // 还没做完所有题，循环回来
+        cur=0;render();
+      }else{
+        cur=0;render();
+      }
+    }
+  };
+  // ---- 键盘 ----
   document.addEventListener('keydown',function(e){
     if(!overlay.classList.contains('show'))return;
     if(e.key==='ArrowRight'||e.key==='ArrowDown')document.getElementById('anki-next').click();
@@ -343,16 +428,35 @@ document.getElementById('open').onclick=function(){let o=this.textContent==='展
     else if(e.key===' '||e.key==='Enter'){e.preventDefault();document.getElementById('anki-main-btn').click();}
     else if(e.key==='Escape')close();
   });
-  // 抽一题
-  document.getElementById('rand').onclick=function(){
-    let cards=[...document.querySelectorAll('.card:not(.hide)')];
+  // ---- 对外暴露的函数 ----
+  window.startFullPractice=function(){
+    open(data.slice(),0,false);
+    markCheckin();updateTodayCount();
+  };
+  window.startDailyPractice=function(){
+    var indices=data.map(function(_,i){return i;});
+    var weighted=window.getErrorWeighted(indices);
+    var picked=[];
+    // 随机抽 3 题（加权），不重复
+    var pool=weighted.slice();
+    for(var i=0;i<3&&pool.length>0;i++){
+      var pick=window.weightedRandom(pool);
+      picked.push(pick);
+      pool=pool.filter(function(x){return x.i!==pick;});
+    }
+    var pickedDeck=picked.map(function(p){return data[p.i];});
+    open(pickedDeck,0,true);
+    markCheckin();updateTodayCount();
+  };
+  window.pickOneRandom=function(){
+    var cards=document.querySelectorAll('.card:not(.hide)');
     if(!cards.length)return;
-    const indices=cards.map(c=>parseInt(c.querySelector('.num').textContent)-1);
-    const weighted=window.getErrorWeighted(indices);
-    const pick=window.weightedRandom(weighted);
-    const filteredDeck=indices.map(i=>data[i]);// preserve order for prev/next
-    const startIdx=filteredDeck.findIndex(d=>d===data[pick]);
-    open(filteredDeck,startIdx>=0?startIdx:0);
+    var indices=Array.from(cards).map(function(c){return parseInt(c.querySelector('.num').textContent)-1;});
+    var weighted=window.getErrorWeighted(indices);
+    var pick=window.weightedRandom(weighted);
+    var filteredDeck=indices.map(function(i){return data[i];});
+    var startIdx=filteredDeck.findIndex(function(d){return d===data[pick];});
+    open(filteredDeck,startIdx>=0?startIdx:0,false);
     markCheckin();updateTodayCount();
   };
 })();
