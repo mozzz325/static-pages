@@ -26,7 +26,7 @@
   <label>Azure 区域</label><select id="cfg-azure-region"><option value="eastasia">East Asia</option><option value="southeastasia">Southeast Asia</option><option value="eastus">East US</option></select>
   <label>DeepSeek API Key</label><input id="cfg-ds-key" placeholder="sk-...">
   <label>TTS 音色</label><select id="cfg-voice"><option value="zh-CN-YunxiNeural">云希（男声，推荐）</option><option value="zh-CN-XiaoxiaoNeural">晓晓（女声）</option></select>
-  <div class="btn-row"><button id="cfg-save">💾 保存</button><button id="cfg-reset">🗑 重置</button></div>
+  <div class="btn-row"><button id="cfg-save" onclick="var s={azureKey:document.getElementById('cfg-azure-key').value.trim(),azureRegion:document.getElementById('cfg-azure-region').value,dsKey:document.getElementById('cfg-ds-key').value.trim(),voice:document.getElementById('cfg-voice').value};localStorage.anki_settings=JSON.stringify(s);document.getElementById('settings-panel').classList.remove('show');alert('✅ 设置已保存！');">💾 保存</button><button id="cfg-reset" onclick="localStorage.removeItem('anki_settings');localStorage.removeItem('anki_checkin');localStorage.removeItem('anki_errors');localStorage.removeItem('anki_history');document.getElementById('cfg-azure-key').value='';document.getElementById('cfg-azure-region').value='eastasia';document.getElementById('cfg-ds-key').value='';document.getElementById('cfg-voice').value='zh-CN-YunxiNeural';document.getElementById('settings-panel').classList.remove('show');alert('已重置所有数据和设置！');">🗑 重置</button></div>
   <div class="note">Key 仅存本地浏览器，不会上传。Azure 免费额度 50 万字符/月，DeepSeek 按量计费。</div>
 </div>
 <section class="hero"><h1>CBCA部副职竞聘面试题库</h1><p class="sub">速背版 + 语音练习 + AI评分｜5/29 - 6/3 冲刺</p>
@@ -86,20 +86,7 @@ function saveSetting(k,v){try{var s=JSON.parse(localStorage.anki_settings||'{}')
     document.getElementById('cfg-ds-key').value=getSetting('dsKey')||'';
     document.getElementById('cfg-voice').value=getSetting('voice')||'zh-CN-YunxiNeural';
   })();
-  // 保存
-  document.getElementById('cfg-save').addEventListener('click',function(){
-    var s={azureKey:document.getElementById('cfg-azure-key').value.trim(),azureRegion:document.getElementById('cfg-azure-region').value,dsKey:document.getElementById('cfg-ds-key').value.trim(),voice:document.getElementById('cfg-voice').value};
-    localStorage.anki_settings=JSON.stringify(s);p.classList.remove('show');alert('✅ 设置已保存！');
-  });
-  // 重置
-  document.getElementById('cfg-reset').addEventListener('click',function(){
-    localStorage.removeItem('anki_settings');localStorage.removeItem('anki_checkin');localStorage.removeItem('anki_errors');localStorage.removeItem('anki_history');
-    document.getElementById('cfg-azure-key').value='';
-    document.getElementById('cfg-azure-region').value='eastasia';
-    document.getElementById('cfg-ds-key').value='';
-    document.getElementById('cfg-voice').value='zh-CN-YunxiNeural';
-    p.classList.remove('show');alert('已重置所有数据和设置！');
-  });
+  // 保存和重置按钮改为 HTML onclick，更可靠
 })();
 // ============ 每日打卡系统 ============
 (function(){
