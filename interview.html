@@ -41,8 +41,7 @@
 var _dbg=document.createElement('div');
 _dbg.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:#ff0;color:#000;padding:8px 16px;font-size:14px;font-family:monospace;white-space:pre-wrap;max-height:120px;overflow-y:auto;border-bottom:2px solid red';
 _dbg.textContent='[调试] JS开始执行...';
-if(document.body)document.body.insertBefore(_dbg,document.body.firstChild);else _dbg.textContent+="
-[ERROR] document.body is null!";
+if(document.body)document.body.insertBefore(_dbg,document.body.firstChild);else _dbg.textContent+='\n[ERROR] document.body is null!';
 window._dbgLog=function(msg){_dbg.textContent+=('\n'+msg);_dbg.scrollTop=_dbg.scrollHeight};
 try{console.log("[DBG-START] JS begin, body="+!!document.body);
   _dbgLog('Step1: 定义数据数组...');
