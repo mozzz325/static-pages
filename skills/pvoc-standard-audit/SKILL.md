@@ -44,6 +44,116 @@
 - 尼日利亚：NIS 优先；
 - 博茨瓦纳：BOBS / BOS 标准优先。
 
+## 进口国标准检索来源
+判断“是否存在进口国标准”时，必须优先查官方标准网站或官方目录，不得只凭 Google 普通搜索结果、第三方标准销售网站或客户提供的标准号。
+
+### 肯尼亚 Kenya
+优先来源：
+- KEBS Webstore：https://webstore.kebs.org/
+- KEBS 官网：https://www.kebs.org/
+
+检索重点：
+- 搜索 KS 号，例如 `KS 2520`、`KS EAS 134`、`KS IEC 60335`；
+- 搜索英文产品关键词，例如 `screwdriver`、`biogas stove`、`cold rolled steel sections`；
+- 核对标题、scope、ICS、版本年份；
+- 如果是 EAS 被肯尼亚采标，应识别为 KS EAS，按进口国标准处理。
+
+### 坦桑 Tanzania
+优先来源：
+- TBS Standards Catalogue：https://www.tbs.go.tz/pages/standards-catalogue
+- TBS Sale of Standards：https://standards.tbs.go.tz/
+- TBS EAC Standards Catalogue：https://www.tbs.go.tz/pages/eac-standards-catalogue
+- TBS 官网：https://www.tbs.go.tz/
+
+检索重点：
+- 搜索 TZS 号，例如 `TZS 3335`、`TZS 2664`；
+- 搜索 EAS 号或产品关键词；
+- 区分 TZS、TZS EAS、EAS 草案、已采标版本；
+- 若 TZS 已采纳 EAS，应按进口国标准/区域采标处理。
+
+### 尼日利亚 Nigeria
+优先来源：
+- SON Standards 页面：https://son.gov.ng/standards/
+- SON Library Services：https://son.gov.ng/library-services/
+- SON Library OPAC：https://library.son.gov.ng/
+- SON E-Store：https://estore.son.gov.ng/
+- SON 官网：https://son.gov.ng/
+
+检索重点：
+- 搜索 NIS 号和英文产品关键词；
+- SON Library/OPAC 有标准目录信息时，优先用于确认标准存在性；
+- 若公开目录无法检出，应结合 SONCAP/SON 官方文件、内部标准库或向 SON/进口商确认；
+- 不得只因没有公开网页结果就直接断定没有 NIS。
+
+### 博茨瓦纳 Botswana
+优先来源：
+- Botswana Bureau of Standards / BOBS 官网：https://www.bobstandards.bw/
+- BOBS 标准目录或销售渠道，如官网可访问，应优先使用；
+- 必要时通过 BOBS、进口商或项目内部标准库确认。
+
+检索重点：
+- 搜索 BOS / BOBS 标准号和英文产品关键词；
+- 如官网目录检索能力有限，应记录“公开目录暂未检出”，不要直接写成“不存在进口国标准”；
+- 对高风险产品，例如电器、燃气、建材、食品接触、儿童用品，应进一步确认。
+
+### 区域与国际补充来源
+当进口国标准暂未检出时，再查以下来源：
+- EAC / EAS：优先用于肯尼亚、坦桑等东非国家；
+- ARSO / ARS：非洲区域标准，作为补充；
+- ISO：https://www.iso.org/
+- IEC：https://webstore.iec.ch/
+- ASTM：https://www.astm.org/
+- CEN/EN：优先通过国家标准机构或正式 EN 销售平台确认；
+- 中国 GB：国家标准全文公开系统：https://openstd.samr.gov.cn/
+
+## 官方检索方法
+
+### 1. 先搜标准号
+如果截图里已有标准号，先查该标准是否真实存在、标题是否正确、版本是否合理。
+
+示例：
+- `KS 2520:2014` → 查 KEBS Webstore；
+- `TZS 3335` → 查 TBS Standards Catalogue；
+- `NIS xxx` → 查 SON Library/OPAC；
+- `BOS xxx` → 查 BOBS 官方目录。
+
+### 2. 再搜产品关键词
+如果现用标准不是进口国标准，必须用产品关键词反查是否有进口国标准。
+
+关键词应包括：
+- 产品通用名，例如 `screwdriver`、`handcart`、`gas stove`；
+- 材质或结构，例如 `stainless steel`、`plastic`、`cold rolled steel`；
+- 用途或场景，例如 `food contact`、`biogas`、`agricultural machinery`；
+- 风险属性，例如 `electrical safety`、`gas appliance`、`children`。
+
+### 3. 使用限定域名搜索
+官方站内搜索不好用时，可用搜索引擎限定域名：
+
+- 肯尼亚：`site:webstore.kebs.org 产品关键词 KS`
+- 坦桑：`site:tbs.go.tz 产品关键词 TZS` 或 `site:standards.tbs.go.tz 产品关键词`
+- 尼日利亚：`site:son.gov.ng 产品关键词 NIS` 或 `site:library.son.gov.ng 产品关键词`
+- 博茨瓦纳：`site:bobstandards.bw 产品关键词 BOS`
+- 东非标准：`产品关键词 EAS standard` 或 `site:eac.int 产品关键词 EAS`
+
+### 4. 确认标准适用性
+找到标准后，不能只看标题，应至少确认：
+- 标准号；
+- 标准标题；
+- scope；
+- 产品对象；
+- 材质、用途、能源类型、电压、压力、尺寸等限制；
+- 是否为产品标准、测试方法标准、术语标准或管理体系标准；
+- 是否现行、废止、草案或旧版。
+
+### 5. 记录检索结论
+输出时应明确写：
+- “官方目录检出适用进口国标准”；
+- “官方目录检出相近标准，但需确认 scope”；
+- “官方公开目录暂未检出明确适用进口国标准”；
+- “官网不可访问/公开目录信息不足，需用内部标准库或向标准局确认”。
+
+不得把“我没搜到”直接等同于“不存在”。
+
 ## 风险等级
 
 ### 高风险
@@ -89,6 +199,7 @@
 - 是否整机、配件、耗材或原材料。
 
 ### Step 2：判断是否存在进口国标准
+必须先按“进口国标准检索来源”和“官方检索方法”查询。
 优先判断该产品在目的国是否有明确适用标准。
 如果有，检查是否已使用。
 如果没有，再评价替代标准。
@@ -145,13 +256,14 @@
 1. 不追求一次性找到最完美标准，先判断现用标准是否构成业务风险。
 2. 最高风险永远是：有进口国标准未使用，或进口国标准使用错误。
 3. 如果不存在进口国标准，ISO / IEC / EN / GB / manufacturer’s specification 的选用问题，风险相对较低。
-4. 不能只凭产品英文名称判断，应尽量结合实物、包装、铭牌、说明书。
-5. 涉及能源类型的标准，必须确认能源来源。例如：
+4. 判断“不存在进口国标准”前，必须先查官方目录或官方来源；公开目录未检出时，应表述为“暂未检出”，不能绝对化。
+5. 不能只凭产品英文名称判断，应尽量结合实物、包装、铭牌、说明书。
+6. 涉及能源类型的标准，必须确认能源来源。例如：
    - biogas stove 必须确认气源为 biogas；
    - LPG stove 不能直接套用 biogas stove 标准；
    - 电器产品应确认电压、功率、用途和适用场景。
-6. 涉及食品接触、燃气、电气、儿童用品、建材结构安全时，应提高风险等级。
-7. 对团队输出时，要直接指出风险，不做模糊判断。
+7. 涉及食品接触、燃气、电气、儿童用品、建材结构安全时，应提高风险等级。
+8. 对团队输出时，要直接指出风险，不做模糊判断。
 
 ## 示例判断口径
 
