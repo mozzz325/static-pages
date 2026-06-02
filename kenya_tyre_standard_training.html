@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>肯尼亚轮胎标准选用培训速查卡</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5f6b77;
+      --line: #d7dee7;
+      --paper: #f7f9fc;
+      --card: #ffffff;
+      --road: #2364aa;
+      --work: #b85c00;
+      --farm: #2e7d4f;
+      --parts: #7a4fb3;
+      --warn: #c43d2f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .hero {
+      background: linear-gradient(90deg, #17202a, #2364aa);
+      color: #fff;
+      padding: 42px 48px 34px;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 920px;
+      margin: 0;
+      color: rgba(255,255,255,.9);
+      font-size: 16px;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    .rule-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .rule {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--road);
+      border-radius: 8px;
+      padding: 14px 16px;
+      min-height: 100px;
+    }
+
+    .rule b {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 17px;
+    }
+
+    .rule span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .memo {
+      background: #fff7ea;
+      border: 1px solid #f4d7ad;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 18px 0 28px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 28px 0 14px;
+      font-size: 22px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--road);
+      flex: 0 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      display: grid;
+      grid-template-columns: 188px 1fr;
+      gap: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 230px;
+    }
+
+    .photo {
+      position: relative;
+      background: #e9edf3;
+      min-height: 230px;
+      height: 230px;
+      align-self: start;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo.product img {
+      object-fit: contain;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .photo.empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      padding: 18px;
+      background: #f3f6fa;
+    }
+
+    .empty-title {
+      color: #243447;
+      font-size: 17px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .empty-sub {
+      color: #697684;
+      font-size: 13px;
+      text-align: center;
+      max-width: 150px;
+    }
+
+    .photo.diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      padding: 18px;
+      background: linear-gradient(135deg, #f8fafc, #e7edf5);
+    }
+
+    .tire-art {
+      position: relative;
+      width: 126px;
+      height: 160px;
+      border-radius: 48% / 50%;
+      background:
+        radial-gradient(ellipse at center, #f8fafc 0 23%, #27313c 24% 34%, transparent 35%),
+        linear-gradient(90deg, #111827 0%, #56616d 24%, #202a34 50%, #56616d 76%, #111827 100%);
+      box-shadow: inset -16px 0 26px rgba(0,0,0,.35), inset 15px 0 22px rgba(255,255,255,.18), 0 12px 22px rgba(19,32,48,.22);
+      overflow: hidden;
+    }
+
+    .tire-art::before {
+      content: "";
+      position: absolute;
+      inset: 8px 24px;
+      border-radius: 42% / 50%;
+      opacity: .7;
+      background: repeating-linear-gradient(90deg, rgba(255,255,255,.32) 0 4px, transparent 4px 14px);
+      mix-blend-mode: screen;
+    }
+
+    .tire-art::after {
+      content: attr(data-code);
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 28px;
+      color: #eef3f8;
+      font-size: 12px;
+      font-weight: 800;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0,0,0,.55);
+    }
+
+    .tire-art.narrow { width: 92px; }
+    .tire-art.wide { width: 154px; height: 160px; }
+    .tire-art.large { width: 164px; height: 174px; }
+    .tire-art.solid::before { background: repeating-linear-gradient(0deg, rgba(255,255,255,.22) 0 7px, transparent 7px 17px); }
+    .tire-art.block::before { background: repeating-linear-gradient(45deg, rgba(255,255,255,.30) 0 8px, transparent 8px 18px), repeating-linear-gradient(-45deg, rgba(255,255,255,.20) 0 8px, transparent 8px 18px); }
+    .tire-art.chevron::before { background: linear-gradient(135deg, transparent 0 38%, rgba(255,255,255,.35) 39% 47%, transparent 48%), linear-gradient(45deg, transparent 0 38%, rgba(255,255,255,.35) 39% 47%, transparent 48%); background-size: 46px 34px; }
+    .tire-art.rib::before { background: repeating-linear-gradient(90deg, rgba(255,255,255,.40) 0 5px, transparent 5px 20px); }
+
+    .rim-art,
+    .tube-art,
+    .valve-art {
+      position: relative;
+      width: 154px;
+      height: 154px;
+    }
+
+    .rim-art {
+      border-radius: 50%;
+      border: 26px solid #f2b233;
+      background: radial-gradient(circle, #f8fafc 0 23%, #d8891c 24% 34%, #f2b233 35% 50%, transparent 51%);
+      box-shadow: inset 0 0 0 10px #c47419, 0 12px 22px rgba(19,32,48,.18);
+    }
+
+    .tube-art {
+      border-radius: 50%;
+      border: 24px solid #1f2933;
+      box-shadow: inset 0 0 0 7px #4b5563, 0 12px 22px rgba(19,32,48,.18);
+    }
+
+    .tube-art::after {
+      content: "TR";
+      position: absolute;
+      right: 12px;
+      top: 18px;
+      padding: 3px 5px;
+      border-radius: 4px;
+      background: #c9ced6;
+      color: #1f2933;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .valve-art {
+      width: 72px;
+      height: 156px;
+      border-radius: 18px;
+      background: linear-gradient(90deg, #8b949e, #e5e7eb 45%, #737b86);
+      box-shadow: inset -10px 0 16px rgba(0,0,0,.22), 0 12px 20px rgba(19,32,48,.18);
+    }
+
+    .valve-art::before {
+      content: "";
+      position: absolute;
+      left: 17px;
+      right: 17px;
+      top: -16px;
+      height: 34px;
+      border-radius: 10px;
+      background: #4b5563;
+    }
+
+    .retread-band {
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      top: 24px;
+      height: 38px;
+      border-radius: 18px;
+      border: 3px dashed #ffd166;
+      background: rgba(255,209,102,.18);
+      z-index: 2;
+    }
+
+    .diagram-note {
+      color: #44515f;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .tag {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      color: #fff;
+      background: rgba(23,32,42,.82);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .content {
+      padding: 15px 16px 16px 0;
+    }
+
+    .content h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 12px;
+      color: var(--muted);
+      background: #fbfcfe;
+      white-space: nowrap;
+    }
+
+    .content p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .std {
+      margin-top: 9px;
+      padding: 9px 10px;
+      border-radius: 6px;
+      background: #eef5ff;
+      border: 1px solid #c8dcf8;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .road .dot, .road .std { border-color: #c8dcf8; background: #eef5ff; }
+    .work .dot { background: var(--work); }
+    .work .std { background: #fff3e6; border-color: #f3cfa6; }
+    .farm .dot { background: var(--farm); }
+    .farm .std { background: #eefaf3; border-color: #c6e7d1; }
+    .parts .dot { background: var(--parts); }
+    .parts .std { background: #f3effb; border-color: #d7c9ee; }
+
+    .marking-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .mark {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .mark code {
+      display: inline-block;
+      margin: 0 4px 6px 0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #f0f3f8;
+      color: #243447;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef2f7;
+      font-size: 13px;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    footer {
+      max-width: 1180px;
+      margin: 0 auto 42px;
+      padding: 0 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer a { color: #2b5f9e; }
+
+    @media (max-width: 980px) {
+      .rule-strip, .grid, .marking-board { grid-template-columns: 1fr; }
+      .card { grid-template-columns: 150px 1fr; }
+      .hero { padding: 34px 22px 28px; }
+    }
+
+    @media (max-width: 640px) {
+      .card { grid-template-columns: 1fr; }
+      .photo { height: 210px; }
+      .content { padding: 0 16px 16px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .hero { color: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .card, .rule, table, .mark { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>肯尼亚轮胎标准选用培训速查卡</h1>
+    <p>适用于轮胎标准初审：先看品名，再看侧标/花纹 Marking，再看规格，最后用 HS 交叉复核。口诀是“人车路、工农场、胎管带圈阀分开判”。</p>
+  </header>
+
+  <main>
+    <section class="rule-strip">
+      <div class="rule"><b>1. 先看品名</b><span>Tyre、Tube、Flap、Rim/Wheel、Valve 先分开；配件不要套轮胎标准。</span></div>
+      <div class="rule"><b>2. 再看用途词</b><span>Passenger、Truck/Bus、OTR、Tractor、Forklift、Backhoe 直接决定大方向。</span></div>
+      <div class="rule"><b>3. 再看 Marking</b><span>LT/C、M/C、R-1/R-4、E/L/G、IND、NHS、REGROOVABLE 都是强线索。</span></div>
+      <div class="rule"><b>4. 最后看规格</b><span>规格只能做初判：17.5-25 像 OTR，16.9-28 像农机，11R22.5 像卡客车。</span></div>
+    </section>
+
+    <div class="memo">一句话记忆：乘用看 EAS 358，轻卡看 EAS 359，卡客看 EAS 357，工程 OTR 看 4250，农机看 4251/8664，叉车工业充气才看 3739。</div>
+
+    <section class="road">
+      <h2 class="section-title"><span class="dot"></span>公路车辆轮胎</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="photo product"><img src="https://cdn11.bigcommerce.com/s-e8i94i2k1a/products/202006/images/1634102/bridgestone-turanza-t005a-b-aaa1-1__50978.1757495556.386.513.jpg?c=2" alt="Bridgestone Turanza T005A 205/55R16 乘用车轮胎产品图"><span class="tag">PCR / Car</span></div>
+          <div class="content">
+            <h3>轿车 / 乘用车胎</h3>
+            <div class="chips"><span class="chip">Passenger car</span><span class="chip">PCR</span><span class="chip">SUV 无 LT/C</span></div>
+            <p><span class="label">看什么：</span>品名写 Passenger、Car、PCR；规格像 195/65R15 91H、205/55R16。</p>
+            <p><span class="label">Marking：</span>P、RADIAL、速度级 H/V/W；SUV 的 HT/AT/MT 只是花纹，不自动变轻卡。</p>
+            <div class="std">标准桶：KS EAS 358:2004</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://cdn11.bigcommerce.com/s-e8i94i2k1a/products/110623/images/1427112/bfgoodrich-all-terrain-ta-ko2-w-aaa-1__86791.1712201065.386.513.jpg?c=2" alt="BFGoodrich All-Terrain T/A KO2 LT245/75R16 轻卡轮胎产品图"><span class="tag">LT / C</span></div>
+          <div class="content">
+            <h3>轻卡 / 面包车 / 皮卡胎</h3>
+            <div class="chips"><span class="chip">Light truck</span><span class="chip">Van</span><span class="chip">Commercial</span></div>
+            <p><span class="label">看什么：</span>规格带 LT 或 C，比如 LT245/75R16、195R15C、205/75R16C。</p>
+            <p><span class="label">Marking：</span>LT、C、8PR/10PR、Load Range C/D/E 是强线索。</p>
+            <div class="std">标准桶：EAS 359:2004，系统内按 Kenya adopted 名称确认</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://cdn11.bigcommerce.com/s-e8i94i2k1a/products/140607/images/998199/goodyear-fuel-max-rtd-b-aaa-1__39498.1775521554.386.513.jpg?c=2" alt="Goodyear Fuel Max RTD 11R22.5 卡客车轮胎产品图"><span class="tag">TBR</span></div>
+          <div class="content">
+            <h3>卡车 / 公共汽车胎</h3>
+            <div class="chips"><span class="chip">Truck</span><span class="chip">Bus</span><span class="chip">TBR</span></div>
+            <p><span class="label">看什么：</span>11R22.5、295/80R22.5、315/80R22.5、12.00R20。</p>
+            <p><span class="label">Marking：</span>REGROOVABLE、TUBELESS、位置词 Steer/Drive/Trailer 常见。</p>
+            <div class="std">标准桶：KS EAS 357:2004；尺寸/轮辋参考 KS ISO 4209-1:2001</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://cdn11.bigcommerce.com/s-e8i94i2k1a/products/195494/images/1587119/technic-t-c-b-ara-1__52044.1732712747.386.513.jpg?c=2" alt="Technic T/C Rear 110/90-17 摩托车轮胎产品图"><span class="tag">M/C</span></div>
+          <div class="content">
+            <h3>摩托车 / 踏板车胎</h3>
+            <div class="chips"><span class="chip">Motorcycle</span><span class="chip">Scooter</span><span class="chip">M/C</span></div>
+            <p><span class="label">看什么：</span>90/90-17 M/C、2.75-18、3.00-10、120/70ZR17。</p>
+            <p><span class="label">Marking：</span>M/C 是 motorcycle；NHS 表示非公路用途。</p>
+            <div class="std">标准桶：KS ISO 5751-1/2/3:2010；小轮径 code 系列看 KS EAS 475-1:2008 / KS ISO 6054-1</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://bicycle.kendatire.com/media/1130/klondike-skinny.jpg" alt="Kenda Klondike Skinny Cross 700C / 37-622 自行车胎产品图"><span class="tag">Bike</span></div>
+          <div class="content">
+            <h3>自行车胎</h3>
+            <div class="chips"><span class="chip">Bicycle</span><span class="chip">Bike</span><span class="chip">700C</span></div>
+            <p><span class="label">看什么：</span>700x25C、26x1.95、37-622、28-622。</p>
+            <p><span class="label">Marking：</span>ETRTO 双数字如 37-622 是自行车常见写法。</p>
+            <div class="std">标准桶：KS ISO 5775-1:2023</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://s7g10.scene7.com/is/image/conti/retreads-fs?dpr=off&amp;qlt=85&amp;ts=1762189438207" alt="Continental Retreads 翻新胎胎面产品图"><span class="tag">Retread</span></div>
+          <div class="content">
+            <h3>翻新胎</h3>
+            <div class="chips"><span class="chip">Retreaded</span><span class="chip">Remoulded</span><span class="chip">Renewed</span></div>
+            <p><span class="label">看什么：</span>品名或文件明确写 retread/remould/renewed。</p>
+            <p><span class="label">Marking：</span>RETREAD、REMOLD、翻新厂标识；新胎标准不能直接替代。</p>
+            <div class="std">标准桶：KS EAS 53:2000</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="work">
+      <h2 class="section-title"><span class="dot"></span>工程机械 / 工业车辆轮胎</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="photo product"><img src="kenya_tyre_assets/otr-earthmover-23.5-25.jpg" alt="23.5-25 E3/L3 OTR 工程机械轮胎产品图"><span class="tag">OTR</span></div>
+          <div class="content">
+            <h3>OTR / Earthmover 土方胎</h3>
+            <div class="chips"><span class="chip">OTR</span><span class="chip">Earthmover</span><span class="chip">Loader</span><span class="chip">Mining</span></div>
+            <p><span class="label">看什么：</span>17.5-25、20.5-25、23.5-25、14.00-24、16.00R25。</p>
+            <p><span class="label">Marking：</span>E-2/E-3/E-4、L-3/L-5、G-2/G-3 是工程用途强线索。</p>
+            <div class="std">标准桶：KS ISO 4250-1:2023; KS ISO 4250-2:2023</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://mainsailtires.com/wp-content/uploads/2025/08/f2f0983572d384b3588057c100dd4ea4.jpg" alt="445/95R25 移动吊车轮胎实物图"><span class="tag">Crane</span></div>
+          <div class="content">
+            <h3>移动吊车 / 特种高速工程胎</h3>
+            <div class="chips"><span class="chip">Mobile crane</span><span class="chip">All terrain crane</span><span class="chip">Crash tender</span></div>
+            <p><span class="label">看什么：</span>385/95R25、445/95R25、525/80R25 等，常有较高速度级。</p>
+            <p><span class="label">Marking：</span>Crane、E/F 速度级、公路行驶能力是重点。</p>
+            <div class="std">标准桶：KS ISO 10571:2016；如接受 ISO 最新，核 ISO 10571:2024</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="kenya_tyre_assets/solid-forklift-7.00-12.jpg" alt="7.00-12 叉车工业实心胎产品图"><span class="tag">Solid</span></div>
+          <div class="content">
+            <h3>叉车 / 工业实心胎</h3>
+            <div class="chips"><span class="chip">Forklift</span><span class="chip">Solid tyre</span><span class="chip">Press-on</span></div>
+            <p><span class="label">看什么：</span>品名写 Solid、Resilient solid、Press-on solid。</p>
+            <p><span class="label">Marking：</span>SOLID、non-pneumatic；注意不是充气胎。</p>
+            <div class="std">标准桶：KS ISO 10499-1:2019; KS ISO 10499-2:1998；圆柱/锥底看 KS ISO 10500:1991</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="kenya_tyre_assets/r4-backhoe-bkt-tr461.jpg" alt="BKT TR 461 R-4 工程农用轮胎产品图"><span class="tag">R-4 / IND</span></div>
+          <div class="content">
+            <h3>Backhoe / 工程农用型胎</h3>
+            <div class="chips"><span class="chip">Backhoe loader</span><span class="chip">Industrial tractor</span><span class="chip">R-4</span><span class="chip">IND</span></div>
+            <p><span class="label">看什么：</span>12.5/80-18、16.9-24 R-4、19.5L-24。</p>
+            <p><span class="label">Marking：</span>R-4 或 IND 是关键；外形像农机，但用途在工程机械。</p>
+            <div class="std">标准桶：KS ISO 18808:2021</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://www.taihaotyre.com/Ueditor/net/upload//6371418448327669937733514.jpg" alt="叉车工业车辆充气胎实物图"><span class="tag">3739</span></div>
+          <div class="content">
+            <h3>工业车辆 / 叉车充气胎</h3>
+            <div class="chips"><span class="chip">Industrial tyre</span><span class="chip">Forklift pneumatic</span><span class="chip">Material handling</span></div>
+            <p><span class="label">看什么：</span>6.50-10、7.00-12、8.15-15、250-15，且品名明确工业车辆。</p>
+            <p><span class="label">Marking：</span>Industrial、Forklift、Pneumatic；没有 OTR/E/L/G 工程花纹代码。</p>
+            <div class="std">标准桶：KS ISO 3739-1:2022; KS ISO 3739-2:2021</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://store.ntstiresupply.com/web/image/product.template/20968/image_1920?unique=d302ddf" alt="BKT FS 216 Forestry LS-2 林业轮胎产品图"><span class="tag">Forestry</span></div>
+          <div class="content">
+            <h3>林业 / 伐木胎</h3>
+            <div class="chips"><span class="chip">Forestry</span><span class="chip">Logging</span><span class="chip">Skidder</span></div>
+            <p><span class="label">看什么：</span>品名写 Forestry、Logging、Skidder。</p>
+            <p><span class="label">Marking：</span>LS、LS-2、LS-3、Forestry service 是强线索。</p>
+            <div class="std">标准桶：KS ISO 18807:2019</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="farm">
+      <h2 class="section-title"><span class="dot"></span>农业轮胎</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="photo product"><img src="kenya_tyre_assets/tractor-r1w-480-80r46.jpg" alt="480/80R46 Continental Tractor 85 R-1W 农业拖拉机轮胎产品图"><span class="tag">R-1W</span></div>
+          <div class="content">
+            <h3>农业拖拉机斜交胎</h3>
+            <div class="chips"><span class="chip">Agricultural tractor</span><span class="chip">Farm tractor</span><span class="chip">Bias</span></div>
+            <p><span class="label">看什么：</span>16.9-28、14.9-30、18.4-34、13.6-28，常带 PR。</p>
+            <p><span class="label">Marking：</span>R-1、R-1W、R-2、F-2；人字花纹是常见视觉线索。</p>
+            <div class="std">标准桶：KS ISO 4251-1:2019; KS ISO 4251-2:2019</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://www.goodyearfarmtires.eu/img/content/products/sub-categories/70-series.png" alt="Goodyear Farm Tires 480/70R34 农业径向胎产品图"><span class="tag">480/70R34</span></div>
+          <div class="content">
+            <h3>农业径向胎 480/70R34</h3>
+            <div class="chips"><span class="chip">Tractor radial</span><span class="chip">480/70R34</span><span class="chip">RADIAL</span></div>
+            <p><span class="label">看什么：</span>480/70R34、70 series、Tractor Radial。</p>
+            <p><span class="label">Marking：</span>RADIAL、R-1/R-1W、载重指数/速度级比 PR 更常见。</p>
+            <div class="std">标准桶：KS ISO 8664:2018</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://store.ntstiresupply.com/web/image/product.template/40450/image_1920?unique=1d92ceb" alt="Firestone 520/85R38 Radial All Traction 23 R-1 农业径向胎产品图"><span class="tag">520/85R38</span></div>
+          <div class="content">
+            <h3>农业径向胎 520/85R38</h3>
+            <div class="chips"><span class="chip">Tractor radial</span><span class="chip">520/85R38</span><span class="chip">R-1</span></div>
+            <p><span class="label">看什么：</span>520/85R38、Agricultural Radial、Rear Tractor。</p>
+            <p><span class="label">Marking：</span>RADIAL、R-1、载重/速度符号；规格通常由侧标或技术页确认。</p>
+            <div class="std">标准桶：KS ISO 8664:2018</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://store.ntstiresupply.com/web/image/product.template/40124/image_1920?unique=e4fb53b" alt="Alliance VF480/70R34 Agriflex VF R-1 Very High Flexion 农业径向胎产品图"><span class="tag">IF/VF</span></div>
+          <div class="content">
+            <h3>农业径向胎 IF/VF</h3>
+            <div class="chips"><span class="chip">Very High Flexion</span><span class="chip">VF480/70R34</span><span class="chip">RADIAL</span></div>
+            <p><span class="label">看什么：</span>IF 或 VF 前缀，比如 VF480/70R34、IF520/85R38。</p>
+            <p><span class="label">Marking：</span>IF/VF 是高挠曲农业径向胎线索，需和普通 radial 区分记录。</p>
+            <div class="std">标准桶：KS ISO 8664:2018</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://cdn11.bigcommerce.com/s-e8i94i2k1a/images/stencil/500x659/products/69337/1415913/bkt-farm-implement-i-1-b-aaa-1__69270.1775158638.jpg?c=2" alt="I-1 农机具轮胎实物图"><span class="tag">Implement</span></div>
+          <div class="content">
+            <h3>农机具 / 农用拖车胎</h3>
+            <div class="chips"><span class="chip">Implement</span><span class="chip">Farm trailer</span><span class="chip">I-1</span></div>
+            <p><span class="label">看什么：</span>品名写 Agricultural implement、Farm trailer。</p>
+            <p><span class="label">Marking：</span>I-1、11L-15、10.0/75-15.3 等常见；不是拖拉机驱动胎。</p>
+            <div class="std">标准桶：KS EAS 360:2004</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="kenya_tyre_assets/farm-r1-r4-comparison.jpg" alt="R-1 与 R-4 农用轮胎花纹对比图"><span class="tag">R-1 / R-4</span></div>
+          <div class="content">
+            <h3>农用胎快速复核</h3>
+            <div class="chips"><span class="chip">R-1/R-2</span><span class="chip">PR</span><span class="chip">Tractor</span></div>
+            <p><span class="label">看什么：</span>如果文件只写 Tyre + 16.9-28，先问用途/花纹；R-1/R-2 走农机，R-4/IND 转工程农用。</p>
+            <p><span class="label">Marking：</span>同一尺寸可能对应不同用途，花纹代码比“看起来像”更可靠。</p>
+            <div class="std">标准桶：普通农机 4251；R-4/IND 18808；径向 8664</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="parts">
+      <h2 class="section-title"><span class="dot"></span>配件和轮辋：不要套错“Tyre”标准</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="photo product"><img src="https://blains.co.uk/cdn/shop/files/TR218A_433b2322-fe96-4103-a837-6ff272705475.jpg?v=1712479986&amp;width=1200" alt="18.4x30 TR218A Valve Inner Tube 内胎产品图"><span class="tag">Tube</span></div>
+          <div class="content">
+            <h3>内胎</h3>
+            <div class="chips"><span class="chip">Tube</span><span class="chip">Inner tube</span><span class="chip">TT tube</span></div>
+            <p><span class="label">看什么：</span>Tube 17.5-25、Tube 23.5-25；HS 常在 4013。</p>
+            <p><span class="label">Marking：</span>TR13/TR15/TR218A 等气门嘴型号可辅助判断。</p>
+            <div class="std">标准桶：KS 700:1990</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://kabat.pl/wp-content/uploads/2024/11/Ochraniacz-600x400.png" alt="轮胎垫带 Rim Flap 实物图"><span class="tag">Flap</span></div>
+          <div class="content">
+            <h3>垫带 / Rim Flap</h3>
+            <div class="chips"><span class="chip">Flap</span><span class="chip">Rubber flap</span><span class="chip">Rim flap</span></div>
+            <p><span class="label">看什么：</span>Flap 17.5-25、Flap 23.5-25；通常跟 TT 工程胎配套。</p>
+            <p><span class="label">Marking：</span>只要写 Flap，就不要按 inner tube 审。</p>
+            <div class="std">标准桶：ISO 21634:2022</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="https://cdn11.bigcommerce.com/s-68w9l0b9/images/stencil/1280x1280/products/227/450/IMG_20161208_1723110_rewind_1__50262.1539831699.jpg?c=2" alt="19.5 x 25 OTR 多件式轮辋实物图"><span class="tag">Rim / Wheel</span></div>
+          <div class="content">
+            <h3>钢圈 / 轮辋 / 车轮</h3>
+            <div class="chips"><span class="chip">Rim</span><span class="chip">Wheel</span><span class="chip">Steel wheel</span></div>
+            <p><span class="label">看什么：</span>14.0-25 wheel、19.5-25 rim；图片是金属件，不是橡胶胎。</p>
+            <p><span class="label">Marking：</span>多件式锁圈、轮辋宽度 x 直径；不要把 Tube 写进品名。</p>
+            <div class="std">标准桶：OTR 钢圈 ISO 4250-3:2020；农林工程轮辋 KS ISO 18804:2021；卡客车轮辋 KS ISO 4209-2:2020</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="photo product"><img src="kenya_tyre_assets/tr13-tr413-valve-user.webp" alt="TR13 / TR413 snap-in rubber tubeless valve 气门嘴产品图"><span class="tag">Valve</span></div>
+          <div class="content">
+            <h3>气门嘴 / 阀</h3>
+            <div class="chips"><span class="chip">Valve</span><span class="chip">Tyre valve</span><span class="chip">Tubeless valve</span></div>
+            <p><span class="label">看什么：</span>TR13、TR218A、V3-06-5、Tubeless valve。</p>
+            <p><span class="label">Marking：</span>这是轮胎配件，不按 Tyre/Tube 标准。</p>
+            <div class="std">标准桶：KS ISO 9413:2019、KS ISO 4570:2002、KS ISO 14960-1/2</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title"><span class="dot"></span>Marking 字典：看到这些字就往哪个桶里放</h2>
+      <div class="marking-board">
+        <div class="mark"><b>车辆类型</b><br><code>P</code><code>PCR</code>乘用车；<code>LT</code><code>C</code>轻卡；<code>M/C</code>摩托车；<code>TBR</code>卡客车；<code>OTR</code>工程胎。</div>
+        <div class="mark"><b>工程花纹</b><br><code>E-2</code><code>E-3</code><code>E-4</code>自卸/土方；<code>L-3</code><code>L-5</code>装载机；<code>G-2</code><code>G-3</code>平地机。</div>
+        <div class="mark"><b>农业花纹</b><br><code>R-1</code><code>R-1W</code><code>R-2</code>拖拉机驱动；<code>F-2</code>前轮；<code>I-1</code>农机具；<code>R-4</code><code>IND</code>工程农用。</div>
+        <div class="mark"><b>结构/使用</b><br><code>R</code><code>RADIAL</code>径向；<code>PR</code>层级；<code>TT</code>有内胎；<code>TL</code>无内胎；<code>NHS</code>非公路。</div>
+        <div class="mark"><b>公路商业胎</b><br><code>REGROOVABLE</code>常见卡客车；<code>Load Range E</code>轻卡常见；速度级 H/V/W 多见乘用。</div>
+        <div class="mark"><b>配件</b><br><code>Tube</code>内胎；<code>Flap</code>垫带；<code>Rim</code><code>Wheel</code>钢圈；<code>Valve</code>气门嘴。</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title"><span class="dot"></span>规格速记表</h2>
+      <table>
+        <thead>
+          <tr><th>规格写法</th><th>初步归类</th><th>还要确认什么</th><th>常用标准方向</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>195/65R15、205/55R16</td><td>乘用车</td><td>是否有 P/PCR；是否无 LT/C</td><td>KS EAS 358</td></tr>
+          <tr><td>LT245/75R16、195R15C</td><td>轻卡/商用车</td><td>LT、C、Load Range、PR</td><td>EAS 359</td></tr>
+          <tr><td>11R22.5、315/80R22.5</td><td>卡车/公共汽车</td><td>Truck/Bus/TBR、REGROOVABLE</td><td>KS EAS 357</td></tr>
+          <tr><td>17.5-25、20.5-25、23.5-25</td><td>OTR 工程胎</td><td>E/L/G 花纹代码、用途是否 loader/grader/mining</td><td>KS ISO 4250-1/2</td></tr>
+          <tr><td>16.9-28、18.4-34</td><td>农机胎</td><td>R-1/R-2 走农机；R-4/IND 转工程农用</td><td>KS ISO 4251-1/2 或 KS ISO 18808</td></tr>
+          <tr><td>480/70R34、520/85R38</td><td>农业径向胎</td><td>RADIAL、IF/VF、载重速度符号</td><td>KS ISO 8664</td></tr>
+          <tr><td>12.5/80-18、16.9-24 R-4</td><td>Backhoe/工程农用胎</td><td>R-4、IND、Backhoe loader</td><td>KS ISO 18808</td></tr>
+          <tr><td>6.50-10、7.00-12、250-15</td><td>工业车辆/叉车</td><td>Solid 还是 pneumatic；是否 forklift/industrial</td><td>充气 KS ISO 3739；实心 KS ISO 10499</td></tr>
+          <tr><td>14.0-25 wheel、19.5-25 rim</td><td>钢圈/轮辋</td><td>出现 Rim/Wheel/Steel wheel 时按轮辋复核；不要按 Tube 套</td><td>ISO 4250-3 或 KS ISO 18804</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+</body>
+</html>
